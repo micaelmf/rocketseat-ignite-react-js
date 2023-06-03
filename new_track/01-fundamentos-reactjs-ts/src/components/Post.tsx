@@ -53,6 +53,7 @@ export function Post({ post }: PostProps) {
 
   function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('');
+    setNewCommentText(event.target.value);
   }
 
   function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
