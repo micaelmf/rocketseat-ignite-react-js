@@ -14,7 +14,7 @@ export function List({ setTasks, tasks }: ListProps) {
   const [completed, setCompleted] = useState(0);
   const isEmptyTasksList = tasks.length === 0;
 
-  function handleStatusChange(id: string) {
+  function toggleStatusChange(id: string) {
     const tasksUpdated = tasks.map((task) => {
       if (task.id == id) {
         if (task.status == 'pending') {
@@ -27,8 +27,20 @@ export function List({ setTasks, tasks }: ListProps) {
     });
 
     setTasks(tasksUpdated);
+    countCompleted(tasksUpdated);
+  }
 
-    const tasksCompleted = tasks.filter((task) => {
+  function deleteTask(id: string) {
+    const tasksUpdated = tasks.filter((task) => {
+      return task.id !== id;
+    });
+
+    setTasks(tasksUpdated);
+    countCompleted(tasksUpdated);
+  }
+
+  function countCompleted(tasksUpdated: Task[]) {
+    const tasksCompleted = tasksUpdated.filter((task) => {
       return task.status == 'completed';
     });
 
@@ -58,24 +70,28 @@ export function List({ setTasks, tasks }: ListProps) {
         )}
 
         {!isEmptyTasksList &&
-          tasks.map((task, index) => (
-            <div className={styles.item} key={index}>
+          tasks.map((task) => (
+            <div className={styles.item} key={task.id}>
               <div>
                 <input
                   className={styles.roundedCheckbox}
                   type="checkbox"
-                  key={index}
+                  key={task.id}
                   value={status}
-                  onChange={() => handleStatusChange(task.id ?? '')}
+                  onChange={() => toggleStatusChange(task.id ?? '')}
                 />
               </div>
               <div
                 className={task.status === 'completed' ? styles.completed : ''}
               >
-                {task.description ?? ''} {task.status}
+                {task.description ?? ''}
               </div>
               <div className={styles.trash}>
-                <Trash size={24} key={index} />
+                <Trash
+                  size={24}
+                  key={task.id}
+                  onClick={() => deleteTask(task.id ?? '')}
+                />
               </div>
             </div>
           ))}
