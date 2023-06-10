@@ -54,7 +54,7 @@
     align-items: center;
 }
 
-.listContainer .items .item .checked {
+.listContainer .items .item .completed {
     text-decoration-line: line-through;
 }
 

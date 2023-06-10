@@ -35,7 +35,7 @@ export function Form({ setTasks, tasks }: FormProps) {
   }
 
   function handleTaskInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
-    event.target.setCustomValidity('Campo é obrigatório!');
+    event.target.setCustomValidity('Campo obrigatório!');
   }
 
   return (

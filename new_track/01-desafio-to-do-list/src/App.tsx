@@ -13,7 +13,7 @@ function App() {
       <Header />
       <div className="container">
         <Form setTasks={setTasks} tasks={tasks} />
-        <List tasks={tasks} />
+        <List setTasks={setTasks} tasks={tasks} />
       </div>
     </>
   );
