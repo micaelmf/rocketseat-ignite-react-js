@@ -5,9 +5,7 @@
     min-width: var(--min-width);
     max-width: var(--max-width);
     width: -webkit-fill-available;
-    bottom: -26px;
-    padding-left: var(--padding-page);
-    padding-right: var(--padding-page);
+    bottom: 64px;
 }
 
 .form input {

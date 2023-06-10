@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: var(--padding-page);
+    padding: 16px 0 32px 0;
     background-color: var(--gray-700);
 }
 
