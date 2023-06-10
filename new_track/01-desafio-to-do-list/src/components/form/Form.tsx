@@ -21,7 +21,7 @@ export function Form({ setTasks, tasks }: FormProps) {
     };
 
     if (newTask.description) {
-      setTasks([...tasks, newTask]);
+      setTasks([newTask, ...tasks]);
       setTask({ description: '' });
     }
   }
