@@ -22,6 +22,7 @@ export function Form({ setTasks, tasks }: FormProps) {
 
     if (newTask.description) {
       setTasks([...tasks, newTask]);
+      setTask({ description: '' });
     }
   }
 
